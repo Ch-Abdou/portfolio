@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Portfolio of Abdelkader Cherfi - IT Technician & UI/UX Designer based in Blida, Algeria.">
+    <title>Abdelkader Cherfi | IT Specialist & UI/UX Designer</title>
+
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;1,400;1,600&family=Syne:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/game.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="container header-container">
+            <a href="#" class="logo" data-aos="fade-down"><i data-lucide="sparkles"></i>ABDELKADER</a>
+            <nav class="nav" data-aos="fade-down" data-aos-delay="100">
+                <ul class="nav-list">
+                    <li><a href="#home" class="nav-link" data-i18n="nav_home" data-sound="hover">Home</a></li>
+                    <li><a href="#about" class="nav-link" data-i18n="nav_about" data-sound="hover">About</a></li>
+                    <li><a href="#services" class="nav-link" data-i18n="nav_services" data-sound="hover">Services</a>
+                    </li>
+                    <li><a href="#experience" class="nav-link" data-i18n="nav_experience"
+                            data-sound="hover">Experience</a></li>
+                    <li><a href="#contact" class="nav-link" data-i18n="nav_contact" data-sound="hover">Contact</a></li>
+                </ul>
+                <div class="mobile-menu-btn">
+                    <i data-lucide="menu"></i>
+                </div>
+            </nav>
+        </div>
+        <!-- Mobile Menu Overlay -->
+        <div class="mobile-menu">
+            <div class="mobile-menu-header">
+                <span class="logo">Menu</span>
+                <i data-lucide="x" class="close-menu-btn"></i>
+            </div>
+            <ul class="mobile-nav-list">
+                <li><a href="#home" class="mobile-nav-link" data-i18n="nav_home" data-sound="hover">Home</a></li>
+                <li><a href="#about" class="mobile-nav-link" data-i18n="nav_about" data-sound="hover">About</a></li>
+                <li><a href="#services" class="mobile-nav-link" data-i18n="nav_services" data-sound="hover">Services</a>
+                </li>
+                <li><a href="#experience" class="mobile-nav-link" data-i18n="nav_experience"
+                        data-sound="hover">Experience</a></li>
+                <li><a href="#contact" class="mobile-nav-link" data-i18n="nav_contact" data-sound="hover">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </header>
+
+    <main>
+        <!-- Hero Section -->
+        <section id="home" class="hero">
+            <!-- Decorative Background Icons -->
+            <div class="floating-element float-1"><i data-lucide="sparkle"></i></div>
+            <div class="floating-element float-2"><i data-lucide="asterisk"></i></div>
+            <div class="floating-element float-3"><i data-lucide="shield-check"></i></div>
+
+            <div class="container hero-container">
+                <div class="hero-content">
+                    <div class="hero-greeting" data-aos="fade-up">
+                        <i data-lucide="zap" class="icon-sm"></i> <span data-i18n="hero_greeting">Hi, I'm
+                            Abdelkader</span>
+                    </div>
+                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100" data-i18n="hero_title">
+                        IT Specialist & <br>
+                        <span class="italic">UI/UX Designer</span>
+                    </h1>
+                    <p class="hero-text" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_text">
+                        Reliable hardware maintenance meets creative digital design. I build and fix things with
+                        precision.
+                    </p>
+                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                        <div class="magnetic-wrap">
+                            <a href="#contact" class="btn btn-primary" data-sound="click"><span
+                                    data-i18n="hero_btn_contact">Contact
+                                    Me</span> <i data-lucide="arrow-right"></i></a>
+                        </div>
+                        <div class="magnetic-wrap">
+                            <a href="#" class="btn btn-outline" data-sound="click"><i data-lucide="download"></i> <span
+                                    data-i18n="hero_btn_cv">Download CV</span></a>
+                        </div>
+                    </div>
+
+                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                        <div class="stat-item">
+                            <span class="stat-value">5+</span>
+                            <span class="stat-label" data-i18n="hero_stat_exp">Years Exp.</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">100%</span>
+                            <span class="stat-label" data-i18n="hero_stat_rel">Reliability</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-value">Blida</span>
+                            <span class="stat-label" data-i18n="hero_stat_loc">Algeria</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="section about">
+            <div class="container">
+                <div class="section-subtitle" data-aos="fade-up" data-i18n="about_subtitle">Who I Am</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="about_title">About Me</h2>
+                <div class="about-grid">
+                    <!-- Left Side: Digital Visual -->
+                    <div class="about-visual" data-aos="fade-right">
+                        <div class="data-rings"></div>
+                        <div class="avatar-container">
+                            <i data-lucide="user-cog"></i>
+                        </div>
+                    </div>
+
+                    <!-- Right Side: Content -->
+                    <div class="about-text" data-aos="fade-left">
+                        <p class="lead" data-i18n="about_lead">I’m Abdelkader Cherfi, a Higher Technician (TS) based in
+                            Blida, Algeria.</p>
+                        <p data-i18n="about_text">I combine IT maintenance expertise with UI/UX design principles to
+                            deliver practical, user-centered solutions. Passionate about usability, hardware
+                            diagnostics, and building clean user experiences. Whether it's fixing a complex hardware
+                            issue or designing an intuitive interface, I approach every task with precision.</p>
+
+                        <div class="personal-info-grid">
+                            <div class="info-card" data-aos="zoom-in" data-aos-delay="300">
+                                <span class="label" data-i18n="info_status_label">Status</span>
+                                <span class="value" data-i18n="info_status">Single</span>
+                            </div>
+                            <div class="info-card" data-aos="zoom-in" data-aos-delay="400">
+                                <span class="label" data-i18n="info_location_label">Location</span>
+                                <span class="value" data-i18n="info_location">Blida, Algeria</span>
+                            </div>
+                            <div class="info-card" data-aos="zoom-in" data-aos-delay="500">
+                                <span class="label" data-i18n="info_education_label">Education</span>
+                                <span class="value" data-i18n="info_education">TS in IT Maintenance</span>
+                            </div>
+                            <div class="info-card" data-aos="zoom-in" data-aos-delay="600">
+                                <span class="label" data-i18n="info_languages_label">Languages</span>
+                                <span class="value" data-i18n="info_languages">Ar, Fr, Eng</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services" class="section services">
+            <div class="container">
+                <div class="section-subtitle" data-aos="fade-up" data-i18n="services_subtitle">What I Do</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="services_title">My Services
+                </h2>
+                <div class="services-grid">
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="service-icon">
+                            <i data-lucide="wrench"></i>
+                        </div>
+                        <h3 data-i18n="service_hw_title">Hardware Repair</h3>
+                        <ul class="service-list">
+                            <li><i data-lucide="check"></i> <span data-i18n="service_hw_1">IT Troubleshooting</span>
+                            </li>
+                            <li><i data-lucide="check"></i> <span data-i18n="service_hw_2">Inkjet Printer Repair</span>
+                            </li>
+                            <li><i data-lucide="check"></i> <span data-i18n="service_hw_3">Printhead Cleaning</span>
+                            </li>
+                            <li><i data-lucide="check"></i> <span data-i18n="service_hw_4">Component Replacement</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="read-more-btn" data-i18n="service_hw_btn" data-sound="click">Book
+                            Service</a>
+                    </div>
+                    <div class="service-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="service-icon">
+                            <i data-lucide="monitor"></i>
+                        </div>
+                        <h3 data-i18n="service_dig_title">Digital Design</h3>
+                        <ul class="service-list">
+                            <li><i data-lucide="check"></i> <span data-i18n="service_dig_1">HTML / CSS / JS</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="service_dig_2">UI/UX Design (Figma)</span>
+                            </li>
+                            <li><i data-lucide="check"></i> <span data-i18n="service_dig_3">Wireframing</span></li>
+                            <li><i data-lucide="check"></i> <span data-i18n="service_dig_4">Responsive Web Apps</span>
+                            </li>
+                        </ul>
+                        <a href="#contact" class="read-more-btn" data-i18n="service_dig_btn" data-sound="click">Start
+                            Project</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="section experience">
+            <div class="container">
+                <div class="section-subtitle" data-aos="fade-up" data-i18n="exp_subtitle">My Journey</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="exp_title">Experience</h2>
+                <div class="timeline">
+                    <!-- Progress Line -->
+                    <div class="timeline-progress"></div>
+
+                    <!-- Item 1 -->
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="200">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2022 – 2025</span>
+                            <h3 data-i18n="exp_item1_role">IT Apprentice</h3>
+                            <span class="company" data-i18n="exp_item1_company">EGSA (Airport Services)</span>
+                            <p data-i18n="exp_item1_desc">Maintaining IT equipment, diagnostics, and user support.</p>
+                            <div class="job-tags">
+                                <span class="tag">Maintenance</span>
+                                <span class="tag">Diagnostics</span>
+                                <span class="tag">Support</span>
+                                <span class="tag">Networking</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 2 -->
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="300">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2016 – 2021</span>
+                            <h3 data-i18n="exp_item2_role">IT Technician</h3>
+                            <span class="company" data-i18n="exp_item2_company">Cybercafé</span>
+                            <p data-i18n="exp_item2_desc">Computer maintenance and client support.</p>
+                            <div class="job-tags">
+                                <span class="tag">Troubleshooting</span>
+                                <span class="tag">OS Setup</span>
+                                <span class="tag">Customer Service</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Item 3 -->
+                    <div class="timeline-item" data-aos="fade-up" data-aos-delay="400">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date" data-i18n="freelance_label">Freelance</span>
+                            <h3 data-i18n="exp_freelance_role">Inkjet Printer Technician</h3>
+                            <span class="company">Canon / Epson / Brother</span>
+                            <p data-i18n="exp_freelance_desc">Diagnostics, repair, and hardware replacement.</p>
+                            <div class="job-tags">
+                                <span class="tag">Printer Repair</span>
+                                <span class="tag">Hardware</span>
+                                <span class="tag">Ink Systems</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Education Section -->
+        <section id="education" class="section education">
+            <div class="container">
+                <div class="section-subtitle" data-aos="fade-up" data-i18n="edu_subtitle">My Background</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="edu_title">Education</h2>
+
+                <div class="education-container" data-aos="flip-up" data-aos-delay="200">
+                    <div class="flip-card">
+                        <div class="flip-card-inner">
+                            <!-- Front Side -->
+                            <div class="flip-card-front">
+                                <div class="edu-icon">
+                                    <i data-lucide="graduation-cap"></i>
+                                </div>
+                                <h3 data-i18n="edu_card_title">Higher Technician (TS)</h3>
+                                <p class="edu-degree" data-i18n="edu_card_degree">Computer & Office Equipment
+                                    Maintenance</p>
+                                <p class="edu-year"
+                                    style="margin-top: 15px; font-weight: 600; color: var(--primary-color);"
+                                    data-i18n="edu_card_grad">Graduated 2025</p>
+                            </div>
+                            <!-- Back Side -->
+                            <div class="flip-card-back">
+                                <h3 data-i18n="edu_skills_title">Acquired Skills</h3>
+                                <ul class="edu-details">
+                                    <li><i data-lucide="check-circle"></i> <span data-i18n="edu_skill_1">Hardware
+                                            Diagnostics & Repair</span></li>
+                                    <li><i data-lucide="check-circle"></i> <span data-i18n="edu_skill_2">Network
+                                            Infrastructure Setup</span></li>
+                                    <li><i data-lucide="check-circle"></i> <span data-i18n="edu_skill_3">OS Installation
+                                            & Troubleshooting</span></li>
+                                    <li><i data-lucide="check-circle"></i> <span data-i18n="edu_skill_4">Office
+                                            Equipment Maintenance</span></li>
+                                </ul>
+                                <p style="margin-top: 20px; font-size: 0.85rem; color: var(--text-muted);"
+                                    data-i18n="info_location">Blida, Algeria</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="section contact">
+            <div class="container">
+                <div class="section-subtitle" data-aos="fade-up" data-i18n="contact_subtitle">Let's Talk</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="contact_title">Get in Touch
+                </h2>
+                <div class="contact-wrapper">
+                    <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
+                        <!-- High-Tech Location Pulse -->
+                        <div class="location-visual" data-i18n="info_location" title="Blida, Algeria">
+                            <div class="pulse-circle"></div>
+                            <div class="pulse-ring"></div>
+                            <div class="pulse-ring" style="animation-delay: 0.5s;"></div>
+                            <div class="pulse-ring" style="animation-delay: 1s;"></div>
+                        </div>
+
+                        <h3 data-i18n="contact_details_title">Contact Details</h3>
+                        <p data-i18n="contact_desc">Feel free to reach out for collaborations or IT support.</p>
+
+                        <div class="magnetic-wrap" style="width: 100%;">
+                            <div class="contact-item">
+                                <i data-lucide="mail"></i>
+                                <a href="mailto:dadireal@gmail.com">dadireal@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="magnetic-wrap" style="width: 100%;">
+                            <div class="contact-item">
+                                <i data-lucide="smartphone"></i>
+                                <a href="tel:+213550926271">+213 550 92 62 71</a>
+                            </div>
+                        </div>
+
+                        <div class="magnetic-wrap" style="width: 100%;">
+                            <div class="contact-item">
+                                <i data-lucide="map-pin"></i>
+                                <span data-i18n="info_location">Blida, Algeria</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" id="contact-form" data-aos="fade-left" data-aos-delay="300">
+                        <div class="form-group">
+                            <label for="name" data-i18n="form_name">Name</label>
+                            <input type="text" id="name" placeholder="John Doe" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="form_email">Email</label>
+                            <input type="email" id="email" placeholder="john@example.com" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="form_message">Message</label>
+                            <textarea id="message" rows="5" placeholder="Tell me about your project..."
+                                required></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary" id="submit-btn" style="width: 100%;">
+                            <span data-i18n="form_btn">Send Message</span>
+                            <i data-lucide="send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container footer-container">
+            <p data-i18n="footer_copy">&copy; 2025 Abdelkader Cherfi. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Theme Settings Panel -->
+    <div class="theme-settings">
+        <button class="settings-toggle" id="settings-toggle">
+            <i data-lucide="settings"></i>
+        </button>
+        <div class="settings-panel" id="settings-panel">
+            <div class="settings-title" data-i18n="settings_accent">Accent Color</div>
+            <div class="color-options">
+                <div class="color-swatch active" style="background: #BDF22C;" data-color="#BDF22C"></div>
+                <div class="color-swatch" style="background: #FF4D4D;" data-color="#FF4D4D"></div>
+                <div class="color-swatch" style="background: #0D6EFD;" data-color="#0D6EFD"></div>
+                <div class="color-swatch" style="background: #FFD700;" data-color="#FFD700"></div>
+                <div class="color-swatch" style="background: #FF00FF;" data-color="#FF00FF"></div>
+                <div class="color-swatch" style="background: #00FA9A;" data-color="#00FA9A"></div>
+                <div class="color-swatch" style="background: #FF8C00;" data-color="#FF8C00"></div>
+                <div class="color-swatch" style="background: #A020F0;" data-color="#A020F0"></div>
+            </div>
+
+            <div class="settings-title" data-i18n="settings_lang">Language</div>
+            <div class="color-options" style="grid-template-columns: repeat(3, 1fr);">
+                <button class="lang-btn active" data-lang="en" data-sound="hover">EN</button>
+                <button class="lang-btn" data-lang="ar" data-sound="hover">AR</button>
+                <button class="lang-btn" data-lang="fr" data-sound="hover">FR</button>
+            </div>
+
+            <div class="settings-title" data-i18n="settings_appearance">Appearance</div>
+            <div class="settings-row" style="display: flex; flex-direction: column; gap: 10px;">
+                <button class="theme-toggle-btn" id="theme-toggle" data-sound="click">
+                    <i data-lucide="sun" class="sun-icon"></i>
+                    <i data-lucide="moon" class="moon-icon" style="display: none;"></i>
+                    <span id="theme-text" data-i18n="theme_light">Light Mode</span>
+                </button>
+                <button class="theme-toggle-btn" id="sound-toggle" data-sound="click">
+                    <i data-lucide="volume-2" class="volume-on-icon"></i>
+                    <i data-lucide="volume-x" class="volume-off-icon" style="display: none;"></i>
+                    <span id="sound-text">Sound: OFF</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <div id="game-container"></div>
+    <div class="score-board">
+        <i data-lucide="crosshair"></i> <span id="score">0</span>
+    </div>
+
+    <!-- AOS Script -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/translations.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>

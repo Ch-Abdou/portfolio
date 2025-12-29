@@ -1,0 +1,107 @@
+/* Shooting Mini-Game Styles */
+#game-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Let clicks pass through to content unless on a target */
+    z-index: 50;
+    /* Below header but above background */
+    overflow: hidden;
+}
+
+.game-target {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--primary-color);
+    border-radius: 50%;
+    background: rgba(189, 242, 44, 0.1);
+    box-shadow: 0 0 10px var(--primary-color);
+    cursor: crosshair;
+    pointer-events: auto;
+    /* Enable clicking on targets */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s;
+}
+
+.game-target::before {
+    content: '';
+    width: 60%;
+    height: 60%;
+    background: var(--primary-color);
+    border-radius: 50%;
+    opacity: 0.5;
+}
+
+.game-target::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    border: 1px dashed var(--primary-color);
+    border-radius: 50%;
+    animation: spin-target 4s linear infinite;
+}
+
+@keyframes spin-target {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+.explosion {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    background: var(--primary-color);
+    border-radius: 50%;
+    pointer-events: none;
+    animation: explode 0.4s ease-out forwards;
+    z-index: 51;
+}
+
+@keyframes explode {
+    0% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(3);
+        opacity: 0;
+    }
+}
+
+.score-board {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--primary-color);
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    z-index: 1000;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    box-shadow: 0 0 15px rgba(189, 242, 44, 0.2);
+}
+
+/* Cursor Recoil */
+.cursor-outline.shooting {
+    transform: translate(-50%, -50%) scale(0.5);
+    background: rgba(189, 242, 44, 0.5);
+}
