@@ -5,6 +5,82 @@ AOS.init({
     offset: 50
 });
 
+/* --- Page Loader --- */
+window.addEventListener('load', () => {
+    const pageLoader = document.getElementById('page-loader');
+    if (pageLoader) {
+        setTimeout(() => {
+            pageLoader.classList.add('loaded');
+        }, 500); // Small delay for smoother experience
+    }
+});
+
+/* --- Typing Animation --- */
+class TypingAnimation {
+    constructor(element, phrases, options = {}) {
+        this.element = element;
+        this.phrases = phrases;
+        this.typeSpeed = options.typeSpeed || 100;
+        this.deleteSpeed = options.deleteSpeed || 50;
+        this.pauseTime = options.pauseTime || 2000;
+        this.currentPhrase = 0;
+        this.currentChar = 0;
+        this.isDeleting = false;
+        this.init();
+    }
+
+    init() {
+        this.type();
+    }
+
+    type() {
+        const phrase = this.phrases[this.currentPhrase];
+
+        if (this.isDeleting) {
+            this.currentChar--;
+            this.element.textContent = phrase.substring(0, this.currentChar);
+        } else {
+            this.currentChar++;
+            this.element.textContent = phrase.substring(0, this.currentChar);
+        }
+
+        let timeout = this.isDeleting ? this.deleteSpeed : this.typeSpeed;
+
+        // If word is complete
+        if (!this.isDeleting && this.currentChar === phrase.length) {
+            timeout = this.pauseTime;
+            this.isDeleting = true;
+        }
+        // If deletion is complete
+        else if (this.isDeleting && this.currentChar === 0) {
+            this.isDeleting = false;
+            this.currentPhrase = (this.currentPhrase + 1) % this.phrases.length;
+            timeout = 500;
+        }
+
+        setTimeout(() => this.type(), timeout);
+    }
+}
+
+// Initialize typing animation when DOM is ready
+document.addEventListener('DOMContentLoaded', () => {
+    const typingElement = document.querySelector('.typing-text');
+    if (typingElement) {
+        const phrases = [
+            'IT Specialist',
+            'UI/UX Designer',
+            'Hardware Expert',
+            'Problem Solver',
+            'Web Developer'
+        ];
+        new TypingAnimation(typingElement, phrases, {
+            typeSpeed: 80,
+            deleteSpeed: 40,
+            pauseTime: 2500
+        });
+    }
+});
+
 /* --- Sound Manager (Web Audio API) --- */
 class SoundManager {
     constructor() {
@@ -203,76 +279,12 @@ window.addEventListener('mouseup', () => {
     cursorDot.style.transform = 'translate(-50%, -50%) scale(1)';
 });
 
-/* --- Mini Game Logic --- */
-const gameContainer = document.getElementById('game-container');
-const scoreDisplay = document.getElementById('score');
-let score = 0;
-
-function spawnTarget() {
-    const target = document.createElement('div');
-    target.classList.add('game-target');
-
-    // Random Position (avoid edges)
-    const maxX = window.innerWidth - 60;
-    const maxY = window.innerHeight - 60;
-    const randomX = Math.random() * maxX;
-    const randomY = Math.random() * maxY;
-
-    target.style.left = `${randomX}px`;
-    target.style.top = `${randomY}px`;
-
-    // Random Float Animation
-    const duration = 3000 + Math.random() * 2000; // 3-5s
-
-    // Animate across screen lightly
-    const moveX = (Math.random() - 0.5) * 200;
-    const moveY = (Math.random() - 0.5) * 200;
-
-    target.animate([
-        { transform: 'translate(0, 0)' },
-        { transform: `translate(${moveX}px, ${moveY}px)` }
-    ], {
-        duration: duration,
-        easing: 'ease-in-out',
-        fill: 'forwards'
-    });
-
-    // Click Handler (Shoot)
-    target.addEventListener('click', (e) => {
-        e.stopPropagation(); // Don't trigger other things
-        createExplosion(e.clientX, e.clientY);
-        sounds.play('explosion');
-        score += 100;
-        scoreDisplay.innerText = score;
-        scoreDisplay.style.transform = 'scale(1.5)';
-        setTimeout(() => scoreDisplay.style.transform = 'scale(1)', 200);
-        target.remove();
-    });
-
-    // Auto-remove after some time
-    setTimeout(() => {
-        if (document.body.contains(target)) {
-            target.style.opacity = '0';
-            target.style.transform = 'scale(0)';
-            setTimeout(() => target.remove(), 500);
-        }
-    }, duration);
-
-    gameContainer.appendChild(target);
-}
-
-function createExplosion(x, y) {
-    const explosion = document.createElement('div');
-    explosion.classList.add('explosion');
-    explosion.style.left = `${x - 20}px`;
-    explosion.style.top = `${y - 20}px`;
-    gameContainer.appendChild(explosion);
-
-    setTimeout(() => explosion.remove(), 500);
-}
-
-// Spawn Loop
-setInterval(spawnTarget, 2000); // New target every 2s
+// Initialize Game
+window.addEventListener('load', () => {
+    if (typeof ShootingGame !== 'undefined') {
+        const game = new ShootingGame(sounds);
+    }
+});
 
 // Mobile Menu Toggle
 const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -509,6 +521,9 @@ if (contactForm) {
                 <button class="btn btn-outline" onclick="location.reload()" style="margin-top: 20px;">Send Another</button>
             `;
             lucide.createIcons();
+            setTimeout(() => {
+                AOS.refresh();
+            }, 100);
         }, 2000);
     });
 }
@@ -553,4 +568,261 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     });
 });
 
+/* --- Scroll Progress Bar --- */
+const scrollProgress = document.getElementById('scroll-progress');
 
+function updateScrollProgress() {
+    const scrollTop = window.scrollY;
+    const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const scrollPercent = (scrollTop / docHeight) * 100;
+
+    if (scrollProgress) {
+        scrollProgress.style.width = `${scrollPercent}%`;
+    }
+}
+
+window.addEventListener('scroll', updateScrollProgress);
+window.addEventListener('resize', updateScrollProgress);
+
+/* --- Back to Top Button --- */
+const backToTopBtn = document.getElementById('back-to-top');
+
+function toggleBackToTop() {
+    if (window.scrollY > 500) {
+        backToTopBtn?.classList.add('visible');
+    } else {
+        backToTopBtn?.classList.remove('visible');
+    }
+}
+
+if (backToTopBtn) {
+    backToTopBtn.addEventListener('click', () => {
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+        sounds.play('click');
+    });
+}
+
+window.addEventListener('scroll', toggleBackToTop);
+
+/* --- Skills Progress Animation --- */
+const skillsSection = document.getElementById('skills');
+const progressBars = document.querySelectorAll('.progress-bar');
+
+function animateSkills() {
+    progressBars.forEach(bar => {
+        bar.style.transform = 'scaleX(1)';
+    });
+}
+
+if (skillsSection) {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                animateSkills();
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.2 });
+
+    observer.observe(skillsSection);
+}
+
+/* --- Project Filtering --- */
+const filterBtns = document.querySelectorAll('.filter-btn');
+const projectCards = document.querySelectorAll('.project-card');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        // Remove active class
+        filterBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.getAttribute('data-filter');
+
+        projectCards.forEach(card => {
+            if (filter === 'all' || card.getAttribute('data-category') === filter) {
+                card.style.display = 'flex'; // Restore display (was block/flex)
+                setTimeout(() => {
+                    card.style.opacity = '1';
+                    card.style.transform = 'scale(1)';
+                }, 50);
+            } else {
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.9)';
+                setTimeout(() => {
+                    card.style.display = 'none';
+                }, 300);
+            }
+        });
+
+        // Re-trigger AOS layout refresh if needed
+        setTimeout(() => {
+            AOS.refresh();
+        }, 350);
+    });
+});
+
+/* --- Mouse Trail Effect --- */
+let lastTrailTime = 0;
+const trailColors = ['#BDF22C', '#00f0ff', '#ff0055', '#ffffff'];
+
+document.addEventListener('mousemove', (e) => {
+    const now = Date.now();
+    // Throttle: only create particle every 50ms
+    if (now - lastTrailTime > 50) {
+        createTrail(e.clientX, e.clientY);
+        lastTrailTime = now;
+    }
+});
+
+function createTrail(x, y) {
+    const trail = document.createElement('div');
+    trail.classList.add('trail-particle');
+    document.body.appendChild(trail);
+
+    const size = Math.random() * 6 + 2; // Random size 2-8px
+    const color = trailColors[Math.floor(Math.random() * trailColors.length)];
+
+    trail.style.width = `${size}px`;
+    trail.style.height = `${size}px`;
+    trail.style.background = color;
+    trail.style.left = `${x}px`;
+    trail.style.top = `${y}px`;
+    trail.style.boxShadow = `0 0 ${size * 2}px ${color}`;
+
+    // Animate
+    // Random direction
+    const destX = (Math.random() - 0.5) * 50;
+    const destY = (Math.random() - 0.5) * 50;
+
+    const animation = trail.animate([
+        { transform: `translate(-50%, -50%) scale(1)`, opacity: 0.8 },
+        { transform: `translate(calc(-50% + ${destX}px), calc(-50% + ${destY}px)) scale(0)`, opacity: 0 }
+    ], {
+        duration: 800,
+        easing: 'cubic-bezier(0, .9, .57, 1)'
+    });
+
+    animation.onfinish = () => trail.remove();
+}
+
+/**
+ * Hero Parallax Effect
+ * Subtle mouse-driven movement for avatar and monitor
+ */
+class HeroParallax {
+    constructor() {
+        this.avatar = document.querySelector('.hero-avatar-wrapper');
+        this.monitor = document.querySelector('.pc-monitor');
+
+        if (!this.avatar && !this.monitor) return;
+
+        this.mouseX = 0;
+        this.mouseY = 0;
+        this.currentX = 0;
+        this.currentY = 0;
+
+        this.init();
+    }
+
+    init() {
+        window.addEventListener('mousemove', (e) => {
+            // Get mouse position relative to center of screen (-0.5 to 0.5)
+            this.mouseX = (e.clientX / window.innerWidth) - 0.5;
+            this.mouseY = (e.clientY / window.innerHeight) - 0.5;
+        });
+
+        this.animate();
+    }
+
+    animate() {
+        // Smooth interpolation for buttery movement
+        this.currentX += (this.mouseX - this.currentX) * 0.05;
+        this.currentY += (this.mouseY - this.currentY) * 0.05;
+
+        // Avatar moves with mouse
+        const avatarX = this.currentX * 40;
+        const avatarY = this.currentY * 40;
+
+        // Monitor moves in opposite direction (parallax depth)
+        const monitorX = -this.currentX * 30;
+        const monitorY = -this.currentY * 30;
+
+        if (this.avatar) {
+            this.avatar.style.transform = `translate(${avatarX}px, ${avatarY}px)`;
+        }
+
+        if (this.monitor) {
+            this.monitor.style.transform = `translate(${monitorX}px, ${monitorY}px)`;
+        }
+
+        requestAnimationFrame(() => this.animate());
+    }
+}
+
+// Initialize on load
+window.addEventListener('DOMContentLoaded', () => {
+    new HeroParallax();
+    new MagneticButtons();
+    new SpotlightEffect();
+});
+
+/**
+ * Magnetic Buttons Effect
+ */
+class MagneticButtons {
+    constructor() {
+        this.wraps = document.querySelectorAll('.magnetic-wrap');
+        if (this.wraps.length === 0) return;
+
+        this.init();
+    }
+
+    init() {
+        this.wraps.forEach(wrap => {
+            const btn = wrap.querySelector('.btn');
+            if (!btn) return;
+
+            wrap.addEventListener('mousemove', (e) => {
+                const rect = wrap.getBoundingClientRect();
+                const x = e.clientX - rect.left - rect.width / 2;
+                const y = e.clientY - rect.top - rect.height / 2;
+
+                // Move button 40% of the distance from the center of the wrap
+                btn.style.transform = `translate(${x * 0.4}px, ${y * 0.4}px)`;
+            });
+
+            wrap.addEventListener('mouseleave', () => {
+                btn.style.transform = `translate(0px, 0px)`;
+            });
+        });
+    }
+}
+
+/**
+ * Project Card Spotlight Effect
+ */
+class SpotlightEffect {
+    constructor() {
+        this.cards = document.querySelectorAll('.project-card');
+        if (this.cards.length === 0) return;
+
+        this.init();
+    }
+
+    init() {
+        this.cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+
+                card.style.setProperty('--mouse-x', `${x}px`);
+                card.style.setProperty('--mouse-y', `${y}px`);
+            });
+        });
+    }
+}

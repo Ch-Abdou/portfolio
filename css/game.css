@@ -6,55 +6,49 @@
     width: 100%;
     height: 100%;
     pointer-events: none;
-    /* Let clicks pass through to content unless on a target */
     z-index: 50;
-    /* Below header but above background */
     overflow: hidden;
+    display: none;
+    /* Hidden by default until started */
 }
 
 .game-target {
     position: absolute;
-    width: 40px;
-    height: 40px;
-    border: 2px solid var(--primary-color);
-    border-radius: 50%;
-    background: rgba(189, 242, 44, 0.1);
-    box-shadow: 0 0 10px var(--primary-color);
+    width: 60px;
+    height: 60px;
+    background: url('../images/virus-target.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    filter: drop-shadow(0 0 10px rgba(189, 242, 44, 0.6));
     cursor: crosshair;
     pointer-events: auto;
-    /* Enable clicking on targets */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: transform 0.1s;
+    z-index: 50;
+    animation: virus-appear 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards,
+        virus-float 4s ease-in-out infinite;
 }
 
-.game-target::before {
-    content: '';
-    width: 60%;
-    height: 60%;
-    background: var(--primary-color);
-    border-radius: 50%;
-    opacity: 0.5;
-}
-
-.game-target::after {
-    content: '';
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    border: 1px dashed var(--primary-color);
-    border-radius: 50%;
-    animation: spin-target 4s linear infinite;
-}
-
-@keyframes spin-target {
-    from {
-        transform: rotate(0deg);
+@keyframes virus-appear {
+    0% {
+        transform: scale(0);
+        opacity: 0;
     }
 
-    to {
-        transform: rotate(360deg);
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+@keyframes virus-float {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(0deg);
+    }
+
+    50% {
+        transform: scale(1.1) rotate(180deg);
     }
 }
 
@@ -81,27 +75,126 @@
     }
 }
 
-.score-board {
+/* New Game Controls */
+.game-controls {
     position: fixed;
     bottom: 20px;
     right: 20px;
-    background: rgba(0, 0, 0, 0.8);
-    border: 1px solid var(--primary-color);
-    padding: 10px 20px;
-    border-radius: 30px;
-    color: var(--primary-color);
-    font-family: var(--font-heading);
-    font-size: 1.2rem;
-    z-index: 1000;
-    pointer-events: none;
     display: flex;
     align-items: center;
-    gap: 10px;
+    gap: 15px;
+    z-index: 1000;
+}
+
+.score-panel {
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid var(--border-color);
+    padding: 10px 20px;
+    border-radius: 30px;
+    display: flex;
+    gap: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.current-score,
+.high-score {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.current-score span,
+.high-score span {
+    color: var(--primary-color);
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+}
+
+.high-score i {
+    color: #FFD700;
+    /* Gold trophy */
+}
+
+.game-btn {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--bg-card);
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: var(--transition);
     box-shadow: 0 0 15px rgba(189, 242, 44, 0.2);
+}
+
+.game-btn:hover {
+    transform: scale(1.1);
+    background: var(--primary-color);
+    color: #000;
+}
+
+.game-btn.active {
+    background: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 25px rgba(189, 242, 44, 0.5);
 }
 
 /* Cursor Recoil */
 .cursor-outline.shooting {
     transform: translate(-50%, -50%) scale(0.5);
     background: rgba(189, 242, 44, 0.5);
+}
+
+/* Game Start Message */
+.game-message {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: var(--primary-color);
+    font-size: clamp(3rem, 10vw, 5rem);
+    font-weight: 900;
+    text-transform: uppercase;
+    font-family: var(--font-heading);
+    text-shadow: 0 0 20px rgba(189, 242, 44, 0.5), 0 0 40px rgba(189, 242, 44, 0.3);
+    z-index: 2000;
+    pointer-events: none;
+    text-align: center;
+    white-space: nowrap;
+    animation: game-message-in-out 2s cubic-bezier(0.19, 1, 0.22, 1) forwards;
+}
+
+@keyframes game-message-in-out {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0.5) rotate(-5deg);
+        filter: blur(10px);
+    }
+
+    15% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.1) rotate(2deg);
+        filter: blur(0);
+    }
+
+    25% {
+        transform: translate(-50%, -50%) scale(1) rotate(0deg);
+    }
+
+    80% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
+
+    100% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(1.5);
+        filter: blur(20px);
+    }
 }

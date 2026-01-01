@@ -7,6 +7,7 @@
     <meta name="description"
         content="Portfolio of Abdelkader Cherfi - IT Technician & UI/UX Designer based in Blida, Algeria.">
     <title>Abdelkader Cherfi | IT Specialist & UI/UX Designer</title>
+    <link rel="icon" type="image/png" href="images/favicon.png">
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,6 +28,17 @@
 </head>
 
 <body>
+    <!-- Scroll Progress Bar -->
+    <div class="scroll-progress" id="scroll-progress"></div>
+
+    <!-- Page Loader -->
+    <div class="page-loader" id="page-loader">
+        <div class="loader-content">
+            <div class="loader-spinner"></div>
+            <span class="loader-text">ABDELKADER</span>
+        </div>
+    </div>
+
     <header class="header">
         <div class="container header-container">
             <a href="#" class="logo" data-aos="fade-down"><i data-lucide="sparkles"></i>ABDELKADER</a>
@@ -35,6 +47,8 @@
                     <li><a href="#home" class="nav-link" data-i18n="nav_home" data-sound="hover">Home</a></li>
                     <li><a href="#about" class="nav-link" data-i18n="nav_about" data-sound="hover">About</a></li>
                     <li><a href="#services" class="nav-link" data-i18n="nav_services" data-sound="hover">Services</a>
+                    </li>
+                    <li><a href="#projects" class="nav-link" data-i18n="nav_projects" data-sound="hover">My Work</a>
                     </li>
                     <li><a href="#experience" class="nav-link" data-i18n="nav_experience"
                             data-sound="hover">Experience</a></li>
@@ -56,6 +70,8 @@
                 <li><a href="#about" class="mobile-nav-link" data-i18n="nav_about" data-sound="hover">About</a></li>
                 <li><a href="#services" class="mobile-nav-link" data-i18n="nav_services" data-sound="hover">Services</a>
                 </li>
+                <li><a href="#projects" class="mobile-nav-link" data-i18n="nav_projects" data-sound="hover">My Work</a>
+                </li>
                 <li><a href="#experience" class="mobile-nav-link" data-i18n="nav_experience"
                         data-sound="hover">Experience</a></li>
                 <li><a href="#contact" class="mobile-nav-link" data-i18n="nav_contact" data-sound="hover">Contact</a>
@@ -73,20 +89,30 @@
             <div class="floating-element float-3"><i data-lucide="shield-check"></i></div>
 
             <div class="container hero-container">
-                <div class="hero-content">
-                    <div class="hero-greeting" data-aos="fade-up">
+                <!-- Left: Hero Avatar -->
+                <div class="hero-left" data-aos="fade-right">
+                    <div class="hero-avatar-wrapper">
+                        <div class="hero-avatar-inner">
+                            <img src="images/hero-portrait.png" alt="Abdelkader Cherfi" class="hero-avatar-img">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Center: Content -->
+                <div class="hero-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="hero-greeting">
                         <i data-lucide="zap" class="icon-sm"></i> <span data-i18n="hero_greeting">Hi, I'm
                             Abdelkader</span>
                     </div>
-                    <h1 class="hero-title" data-aos="fade-up" data-aos-delay="100" data-i18n="hero_title">
-                        IT Specialist & <br>
-                        <span class="italic">UI/UX Designer</span>
+                    <h1 class="hero-title">
+                        <span class="typing-text"></span><span class="typing-cursor">|</span> <br>
+                        <span class="italic" data-i18n="hero_subtitle">Creative Problem Solver</span>
                     </h1>
-                    <p class="hero-text" data-aos="fade-up" data-aos-delay="200" data-i18n="hero_text">
+                    <p class="hero-text" data-i18n="hero_text">
                         Reliable hardware maintenance meets creative digital design. I build and fix things with
                         precision.
                     </p>
-                    <div class="hero-buttons" data-aos="fade-up" data-aos-delay="300">
+                    <div class="hero-buttons">
                         <div class="magnetic-wrap">
                             <a href="#contact" class="btn btn-primary" data-sound="click"><span
                                     data-i18n="hero_btn_contact">Contact
@@ -98,7 +124,7 @@
                         </div>
                     </div>
 
-                    <div class="hero-stats" data-aos="fade-up" data-aos-delay="400">
+                    <div class="hero-stats">
                         <div class="stat-item">
                             <span class="stat-value">5+</span>
                             <span class="stat-label" data-i18n="hero_stat_exp">Years Exp.</span>
@@ -113,8 +139,108 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Right: Social PC -->
+                <div class="hero-right" data-aos="fade-left" data-aos-delay="200">
+                    <div class="social-pc">
+                        <div class="pc-monitor">
+                            <div class="monitor-screen">
+                                <div class="screen-scanlines"></div>
+                                <div class="monitor-particles">
+                                    <span class="particle p1"></span>
+                                    <span class="particle p2"></span>
+                                    <span class="particle p3"></span>
+                                </div>
+                                <div class="screen-header">
+                                    <span class="screen-dot red"></span>
+                                    <span class="screen-dot yellow"></span>
+                                    <span class="screen-dot green"></span>
+                                </div>
+                                <div class="apps-grid">
+                                    <a href="https://github.com/Ch-Abdou" target="_blank" rel="noopener noreferrer"
+                                        class="app-icon github" title="GitHub">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://www.instagram.com/cherfi.abdlkader/" target="_blank"
+                                        rel="noopener noreferrer" class="app-icon instagram" title="Instagram">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://web.facebook.com/Cherfi.AbdlKader/" target="_blank"
+                                        rel="noopener noreferrer" class="app-icon facebook" title="Facebook">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.791-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://discord.gg/vt6M2eT7" target="_blank" rel="noopener noreferrer"
+                                        class="app-icon discord" title="Discord">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.579.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.085 2.157 2.419 0 1.334-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.085 2.157 2.419 0 1.334-.946 2.419-2.157 2.419z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://www.linkedin.com/in/cherfi-abdelkader-8484b13a2" target="_blank"
+                                        rel="noopener noreferrer" class="app-icon linkedin" title="LinkedIn">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+                                        </svg>
+                                    </a>
+                                    <a href="https://x.com/CherfiDade38396" target="_blank" rel="noopener noreferrer"
+                                        class="app-icon twitter" title="X (Twitter)">
+                                        <svg viewBox="0 0 24 24" fill="currentColor">
+                                            <path
+                                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                                        </svg>
+                                    </a>
+                                </div>
+                            </div>
+                            <div class="monitor-stand"></div>
+                            <div class="monitor-base"></div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <!-- Hero to Marquee Divider -->
+        <div class="section-divider divider-hero">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path d="M1200 120L0 120 1200 0z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <!-- Tech Stack Marquee -->
+        <div class="tech-marquee">
+            <div class="marquee-content">
+                <!-- Set 1 -->
+                <div class="tech-item"><i data-lucide="monitor"></i> <span>Hardware</span></div>
+                <div class="tech-item"><i data-lucide="cpu"></i> <span>Diagnostics</span></div>
+                <div class="tech-item"><i data-lucide="wifi"></i> <span>Networking</span></div>
+                <div class="tech-item"><i data-lucide="code-2"></i> <span>Web Dev</span></div>
+                <div class="tech-item"><i data-lucide="figma"></i> <span>UI Design</span></div>
+                <div class="tech-item"><i data-lucide="server"></i> <span>Server Admin</span></div>
+                <div class="tech-item"><i data-lucide="printer"></i> <span>Maintenance</span></div>
+                <div class="tech-item"><i data-lucide="shield-check"></i> <span>Cybersecurity</span></div>
+
+                <!-- Set 2 (Duplicate for loop) -->
+                <div class="tech-item"><i data-lucide="monitor"></i> <span>Hardware</span></div>
+                <div class="tech-item"><i data-lucide="cpu"></i> <span>Diagnostics</span></div>
+                <div class="tech-item"><i data-lucide="wifi"></i> <span>Networking</span></div>
+                <div class="tech-item"><i data-lucide="code-2"></i> <span>Web Dev</span></div>
+                <div class="tech-item"><i data-lucide="figma"></i> <span>UI Design</span></div>
+                <div class="tech-item"><i data-lucide="server"></i> <span>Server Admin</span></div>
+                <div class="tech-item"><i data-lucide="printer"></i> <span>Maintenance</span></div>
+                <div class="tech-item"><i data-lucide="shield-check"></i> <span>Cybersecurity</span></div>
+            </div>
+        </div>
 
         <!-- About Section -->
         <section id="about" class="section about">
@@ -126,7 +252,7 @@
                     <div class="about-visual" data-aos="fade-right">
                         <div class="data-rings"></div>
                         <div class="avatar-container">
-                            <i data-lucide="user-cog"></i>
+                            <img src="images/avatar.png" alt="Abdelkader Cherfi" class="avatar-image">
                         </div>
                     </div>
 
@@ -155,6 +281,116 @@
                             <div class="info-card" data-aos="zoom-in" data-aos-delay="600">
                                 <span class="label" data-i18n="info_languages_label">Languages</span>
                                 <span class="value" data-i18n="info_languages">Ar, Fr, Eng</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About to Skills Divider -->
+        <div class="section-divider divider-about">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path
+                    d="M321.39,56.44c58-10.79,114.16-30.13,172-41.86,82.39-16.72,168.19-17.73,250.45-.39C823.78,31,906.67,72,985.66,92.83c70.05,18.48,146.53,26.09,214.34,3V0H0V27.35A600.21,600.21,0,0,0,321.39,56.44Z"
+                    class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <!-- Skills Section -->
+        <section id="skills" class="section skills">
+            <div class="container">
+                <div class="section-subtitle" data-aos="fade-up">My Expertise</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100">Skills</h2>
+
+                <div class="skills-grid">
+                    <!-- Hardware & IT Skills -->
+                    <div class="skills-column" data-aos="fade-right" data-aos-delay="200">
+                        <h3 class="skills-category-title"><i data-lucide="cpu"></i> Hardware & IT</h3>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Hardware Diagnostics</span>
+                                <span>95%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar" style="width: 95%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Network Configuration</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar" style="width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Printer Repair</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar" style="width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Windows/Linux OS</span>
+                                <span>88%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar" style="width: 88%;"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Design & Web Skills -->
+                    <div class="skills-column" data-aos="fade-left" data-aos-delay="300">
+                        <h3 class="skills-category-title"><i data-lucide="palette"></i> Design & Web</h3>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>UI/UX Design (Figma)</span>
+                                <span>85%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar" style="width: 85%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>HTML/CSS</span>
+                                <span>90%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar" style="width: 90%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>JavaScript</span>
+                                <span>75%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar" style="width: 75%;"></div>
+                            </div>
+                        </div>
+
+                        <div class="skill-item">
+                            <div class="skill-info">
+                                <span>Graphic Design</span>
+                                <span>80%</span>
+                            </div>
+                            <div class="progress-bar-bg">
+                                <div class="progress-bar" style="width: 80%;"></div>
                             </div>
                         </div>
                     </div>
@@ -207,11 +443,120 @@
             </div>
         </section>
 
+        <!-- Services to Projects Divider -->
+        <div class="section-divider divider-services">
+            <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120"
+                preserveAspectRatio="none">
+                <path d="M1200 0L0 0 892.25 114.72 1200 0z" class="shape-fill"></path>
+            </svg>
+        </div>
+
+        <!-- Projects Section -->
+        <section id="projects" class="section projects">
+            <div class="container">
+                <div class="section-subtitle" data-aos="fade-up" data-i18n="projects_subtitle">My Work</div>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="projects_title">Featured
+                    Projects</h2>
+
+                <!-- Project Filters -->
+                <div class="project-filters" data-aos="fade-up" data-aos-delay="150">
+                    <button class="filter-btn active" data-filter="all">All</button>
+                    <button class="filter-btn" data-filter="hardware">Hardware</button>
+                    <button class="filter-btn" data-filter="web">Web Dev</button>
+                    <button class="filter-btn" data-filter="design">UI/UX</button>
+                </div>
+
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <!-- Project 1 -->
+                    <div class="project-card" data-category="hardware" data-aos="fade-up" data-aos-delay="200">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="#" class="btn-icon"><i data-lucide="external-link"></i></a>
+                            </div>
+                            <!-- Placeholder visual -->
+                            <div class="project-placeholder"
+                                style="background: linear-gradient(45deg, #1a1a1a, #2a2a2a);">
+                                <i data-lucide="server"
+                                    style="width: 40px; height: 40px; color: var(--primary-color);"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Networking</span>
+                                <span class="tag">Hardware</span>
+                            </div>
+                            <h3 data-i18n="proj_1_title">Corporate Network Setup</h3>
+                            <p data-i18n="proj_1_desc">Complete infrastructure deployment for a local SME, including
+                                server racks, cabling, and security configuration.</p>
+                            <a href="#contact" class="project-link" data-i18n="proj_btn">View Details <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <!-- Project 2 -->
+                    <div class="project-card" data-category="web" data-aos="fade-up" data-aos-delay="300">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="#" class="btn-icon"><i data-lucide="external-link"></i></a>
+                            </div>
+                            <div class="project-placeholder"
+                                style="background: linear-gradient(45deg, #0f0f0f, #1f1f1f);">
+                                <i data-lucide="layout"
+                                    style="width: 40px; height: 40px; color: var(--primary-color);"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">UI/UX</span>
+                                <span class="tag">Figma</span>
+                            </div>
+                            <h3 data-i18n="proj_2_title">Modern Portfolio Design</h3>
+                            <p data-i18n="proj_2_desc">A high-performance personal portfolio website featuring
+                                glassmorphism, animations, and dark mode.</p>
+                            <a href="#contact" class="project-link" data-i18n="proj_btn">View Details <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+
+                    <!-- Project 3 -->
+                    <!-- Project 3 -->
+                    <div class="project-card" data-category="design" data-aos="fade-up" data-aos-delay="400">
+                        <div class="project-image">
+                            <div class="project-overlay">
+                                <a href="#" class="btn-icon"><i data-lucide="external-link"></i></a>
+                            </div>
+                            <div class="project-placeholder" style="background: linear-gradient(45deg, #222, #333);">
+                                <i data-lucide="shopping-cart"
+                                    style="width: 40px; height: 40px; color: var(--primary-color);"></i>
+                            </div>
+                        </div>
+                        <div class="project-content">
+                            <div class="project-tags">
+                                <span class="tag">Web App</span>
+                                <span class="tag">Start-up</span>
+                            </div>
+                            <h3 data-i18n="proj_3_title">E-Commerce Dashboard</h3>
+                            <p data-i18n="proj_3_desc">Interactive inventory management dashboard concept with real-time
+                                data visualization.</p>
+                            <a href="#contact" class="project-link" data-i18n="proj_btn">View Details <i
+                                    data-lucide="arrow-right"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+
+
         <!-- Experience Section -->
         <section id="experience" class="section experience">
             <div class="container">
                 <div class="section-subtitle" data-aos="fade-up" data-i18n="exp_subtitle">My Journey</div>
-                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="exp_title">Experience</h2>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="exp_title">Experience
+                </h2>
                 <div class="timeline">
                     <!-- Progress Line -->
                     <div class="timeline-progress"></div>
@@ -223,7 +568,8 @@
                             <span class="timeline-date">2022 – 2025</span>
                             <h3 data-i18n="exp_item1_role">IT Apprentice</h3>
                             <span class="company" data-i18n="exp_item1_company">EGSA (Airport Services)</span>
-                            <p data-i18n="exp_item1_desc">Maintaining IT equipment, diagnostics, and user support.</p>
+                            <p data-i18n="exp_item1_desc">Maintaining IT equipment, diagnostics, and user support.
+                            </p>
                             <div class="job-tags">
                                 <span class="tag">Maintenance</span>
                                 <span class="tag">Diagnostics</span>
@@ -272,7 +618,8 @@
         <section id="education" class="section education">
             <div class="container">
                 <div class="section-subtitle" data-aos="fade-up" data-i18n="edu_subtitle">My Background</div>
-                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="edu_title">Education</h2>
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="edu_title">Education
+                </h2>
 
                 <div class="education-container" data-aos="flip-up" data-aos-delay="200">
                     <div class="flip-card">
@@ -297,7 +644,8 @@
                                             Diagnostics & Repair</span></li>
                                     <li><i data-lucide="check-circle"></i> <span data-i18n="edu_skill_2">Network
                                             Infrastructure Setup</span></li>
-                                    <li><i data-lucide="check-circle"></i> <span data-i18n="edu_skill_3">OS Installation
+                                    <li><i data-lucide="check-circle"></i> <span data-i18n="edu_skill_3">OS
+                                            Installation
                                             & Troubleshooting</span></li>
                                     <li><i data-lucide="check-circle"></i> <span data-i18n="edu_skill_4">Office
                                             Equipment Maintenance</span></li>
@@ -315,7 +663,8 @@
         <section id="contact" class="section contact">
             <div class="container">
                 <div class="section-subtitle" data-aos="fade-up" data-i18n="contact_subtitle">Let's Talk</div>
-                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="contact_title">Get in Touch
+                <h2 class="section-title" data-aos="fade-up" data-aos-delay="100" data-i18n="contact_title">Get in
+                    Touch
                 </h2>
                 <div class="contact-wrapper">
                     <div class="contact-info" data-aos="fade-right" data-aos-delay="200">
@@ -382,6 +731,11 @@
         </div>
     </footer>
 
+    <!-- Back to Top Button -->
+    <button class="back-to-top" id="back-to-top" title="Back to top">
+        <i data-lucide="arrow-up"></i>
+    </button>
+
     <!-- Theme Settings Panel -->
     <div class="theme-settings">
         <button class="settings-toggle" id="settings-toggle">
@@ -434,6 +788,7 @@
     <!-- AOS Script -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="js/translations.js"></script>
+    <script src="js/game.js"></script>
     <script src="js/script.js"></script>
     <script>
         lucide.createIcons();
